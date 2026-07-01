@@ -1,0 +1,276 @@
+/* =========================
+   CUSTOMER BILL PAGE
+========================= */
+
+.customer-bills-page {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.customer-bills-page .content {
+  width: 95%;
+  max-width: 1400px;
+  margin: 20px auto;
+}
+
+/* =========================
+   HEADING
+========================= */
+
+.customer-bills-page h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #1e293b;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   SEARCH SECTION
+========================= */
+
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+
+  margin-bottom: 30px;
+}
+
+.search-section select,
+.search-section input,
+.search-section button {
+  height: 55px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.search-section select,
+.search-section input {
+  flex: 1;
+  padding: 0 15px;
+  border: 1px solid #d1d5db;
+  outline: none;
+}
+
+.search-section select:focus,
+.search-section input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37,99,235,.15);
+}
+
+.search-section button {
+  min-width: 150px;
+  padding: 0 25px;
+
+  border: none;
+  background: #2563eb;
+  color: white;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.search-section button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+.summary-card h3 {
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.summary-card h2 {
+  color: #2563eb;
+}
+
+/* =========================
+   BILL DETAILS
+========================= */
+
+.bill-details {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+.bill-details h2 {
+  margin: 10px 0;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.bill-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+
+.bill-table {
+  width: 100%;
+  min-width: 800px;
+
+  border-collapse: collapse;
+
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.bill-table thead {
+  background: #2563eb;
+}
+
+.bill-table th {
+  color: white;
+  padding: 15px;
+}
+
+.bill-table td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.bill-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width:768px){
+
+  .customer-bills-page h1{
+    font-size:2.2rem;
+  }
+
+  .search-section{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .search-section select,
+  .search-section input,
+  .search-section button{
+    width:100%;
+    height:55px;
+  }
+
+  .search-section button{
+    min-width:0;
+    padding:0;
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:480px){
+
+  .customer-bills-page .content{
+    width:96%;
+    margin:10px auto;
+  }
+
+  .customer-bills-page h1{
+    font-size:1.8rem;
+  }
+
+  .search-section{
+    padding:15px;
+    gap:12px;
+  }
+
+  .search-section select,
+  .search-section input{
+
+    -webkit-appearance:none;
+    appearance:none;
+
+    width:100%;
+
+    height:50px;
+    min-height:50px;
+    line-height:50px;
+
+    padding:0 15px;
+
+    font-size:16px;
+
+    border:1px solid #d1d5db;
+    border-radius:10px;
+
+    box-sizing:border-box;
+  }
+
+  .search-section button{
+
+    width:100%;
+
+    height:50px;
+    min-height:50px;
+
+    font-size:16px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .bill-details{
+    padding:15px;
+  }
+
+  .bill-details h2{
+    font-size:16px;
+  }
+
+  .bill-table{
+    min-width:700px;
+  }
+
+  .bill-table th,
+  .bill-table td{
+    padding:10px;
+    font-size:13px;
+  }
+
+}

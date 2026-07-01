@@ -1,0 +1,155 @@
+/* Full Page */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  width: 90%;
+  max-width: 1300px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+/* Welcome Text */
+.content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #1e293b;
+}
+
+/* Dashboard Cards */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+/* Individual Card */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.15);
+}
+
+.card h3 {
+  color: #475569;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.card h2 {
+  color: #2563eb;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Section Heading */
+.content h2 {
+  margin: 40px 0 20px;
+  color: #1e293b;
+  font-size: 1.7rem;
+}
+
+/* Table Container */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 40px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+/* Header */
+thead {
+  background: #2563eb;
+  color: white;
+}
+
+thead th {
+  padding: 16px;
+  font-size: 1rem;
+}
+
+/* Body */
+tbody td {
+  padding: 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tbody tr {
+  transition: 0.3s;
+}
+
+tbody tr:hover {
+  background: #eff6ff;
+}
+
+/* Last Row Border Remove */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .content {
+    width: 95%;
+  }
+
+  .content h1 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 25px 15px;
+  }
+
+  .card h2 {
+    font-size: 1.7rem;
+  }
+
+  table {
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .content h2 {
+    font-size: 1.3rem;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .card h2 {
+    font-size: 1.5rem;
+  }
+}
