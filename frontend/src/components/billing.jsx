@@ -16,7 +16,7 @@ function Billing() {
   
       const checkUser = async () => {
         try {
-          await axios.get("http://localhost:8000/home", {
+          await axios.get(`${import.meta.env.VITE_API_URL}/home`, {
             withCredentials: true
           }); 
         } catch (err) {
@@ -29,7 +29,7 @@ function Billing() {
 
 
      useEffect(() => {
-     axios.get("http://localhost:8000/getShopkeeper",{withCredentials: true})
+     axios.get(`${import.meta.env.VITE_API_URL}/getShopkeeper`,{withCredentials: true})
       .then((res) => setShopInfo(res.data));
      }, []);
 
@@ -46,7 +46,7 @@ function Billing() {
       const [customerName, setCustomerName] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8000/getProducts",{withCredentials: true})
+    axios.get(`${import.meta.env.VITE_API_URL}/getProducts`,{withCredentials: true})
       .then((res) => setProducts(res.data));
   }, []);
 
@@ -151,7 +151,7 @@ const saveBillToDatabase = async () => {
 
   try {
     const response = await axios.post(
-      "http://localhost:8000/saveBill",
+      `${import.meta.env.VITE_API_URL}/saveBill`,
       {
         customerEmail: email,
         items: billItems,
@@ -335,7 +335,7 @@ doc.save(`Bill_${currentBillNo}.pdf`);
 const pdfBase64 = doc.output("datauristring");
 
 await axios.post(
-  "http://localhost:8000/sendBillEmail",
+  `${import.meta.env.VITE_API_URL}/sendBillEmail`,
   {
     customerEmail: email,
     billNo: currentBillNo,

@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const checkUser = async () => {
       try {
-        const res=await axios.get("http://localhost:8000/home", {
+        const res=await axios.get(`${import.meta.env.VITE_API_URL}/home`, {
           withCredentials: true
         });
         setName(res.data.message);
@@ -31,7 +31,7 @@ const Home = () => {
   useEffect(() => {
 
   axios.get(
-    "http://localhost:8000/dashboard",
+    `${import.meta.env.VITE_API_URL}/dashboard`,
     {
       withCredentials: true
     }

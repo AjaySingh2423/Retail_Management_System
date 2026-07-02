@@ -12,7 +12,7 @@ function Products() {
   useEffect(() => {
     const checkUser = async () => {
       try {
-        await axios.get("http://localhost:8000/home", {
+        await axios.get(`${import.meta.env.VITE_API_URL}/home`, {
           withCredentials: true
         });
       } catch (err) {
@@ -40,7 +40,7 @@ const [editingId, setEditingId] = useState(null);
 
 
 useEffect(() => {
-    axios.get("http://localhost:8000/getProducts",{withCredentials: true})
+    axios.get(`${import.meta.env.VITE_API_URL}/getProducts`,{withCredentials: true})
       .then((res) => setProducts(res.data));
   }, []);
 
@@ -67,7 +67,7 @@ const handleSubmit = async (e) => {
   if (editingId) {
 
     await axios.put(
-      `http://localhost:8000/updateProduct/${editingId}`,
+      `${import.meta.env.VITE_API_URL}/updateProduct/${editingId}`,
       {
         name,
         category,
@@ -88,7 +88,7 @@ const handleSubmit = async (e) => {
   } else {
 
     await axios.post(
-      "http://localhost:8000/addProduct",
+      `${import.meta.env.VITE_API_URL}/addProduct`,
       {
         name,
         category,
@@ -119,7 +119,7 @@ const handleSubmit = async (e) => {
 
   // Refresh table
   const res = await axios.get(
-    "http://localhost:8000/getProducts",
+    `${import.meta.env.VITE_API_URL}/getProducts`,
     {
       withCredentials: true
     }
@@ -139,7 +139,7 @@ const handleDelete = async (id) => {
 
   try {
     const res2 = await axios.delete(
-      `http://localhost:8000/deleteProduct/${id}`,
+      `${import.meta.env.VITE_API_URL}/deleteProduct/${id}`,
       {
         withCredentials: true
       }

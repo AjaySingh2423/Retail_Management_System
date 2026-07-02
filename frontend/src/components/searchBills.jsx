@@ -23,7 +23,7 @@ const CoustomerBill = () => {
     try {
 
       const res = await axios.get(
-        "http://localhost:8000/searchBills",
+        `${import.meta.env.VITE_API_URL}/searchBills`,
         {
           params: {
             field: searchField,

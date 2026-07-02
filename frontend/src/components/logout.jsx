@@ -7,7 +7,7 @@ function Logout() {
 
   useEffect(() => {
     const logout = async () => {
-      await axios.get("http://localhost:8000/logout", {
+      await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
         withCredentials: true
       });
       navigate("/");

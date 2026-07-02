@@ -11,7 +11,7 @@ function Login() {
 
   const sendData = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:8000/login", { email, password }, { withCredentials: true });
+    const res = await axios.post(`${import.meta.env.VITE_API_URL}/login`, { email, password }, { withCredentials: true });
 
     if (res.data.user === false) {
       alert("Invalid email or password");

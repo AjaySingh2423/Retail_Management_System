@@ -18,7 +18,7 @@ const PurchaseHistory = () => {
     const checkUser = async () => {
       try {
         await axios.get(
-          "http://localhost:8000/home",
+          `${import.meta.env.VITE_API_URL}/home`,
           {
             withCredentials: true
           }
@@ -35,7 +35,7 @@ const PurchaseHistory = () => {
   useEffect(() => {
 
     axios.get(
-      "http://localhost:8000/getPurchaseHistory",
+      `${import.meta.env.VITE_API_URL}/getPurchaseHistory`,
       {
         withCredentials: true
       }

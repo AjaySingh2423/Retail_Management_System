@@ -12,7 +12,7 @@ function Customers() {
 
     const checkUser = async () => {
       try {
-        await axios.get("http://localhost:8000/home", {
+        await axios.get(`${import.meta.env.VITE_API_URL}/home`, {
           withCredentials: true
         });
       } catch (err) {
@@ -31,7 +31,7 @@ const handleSubmit = async (e) => {
 
   try {
     const res = await axios.post(
-      "http://localhost:8000/addCoustomer",
+      `${import.meta.env.VITE_API_URL}/addCoustomer`,
       {
         name,
         email
@@ -49,7 +49,7 @@ const handleSubmit = async (e) => {
 
     // Refresh table
     const response = await axios.get(
-      "http://localhost:8000/getCustomers",
+      `${import.meta.env.VITE_API_URL}/getCustomers`,
       {
         withCredentials: true
       }
@@ -76,7 +76,7 @@ const [customers, setCustomers] = useState([]);
 
 useEffect(() => {
   axios.get(
-    "http://localhost:8000/getCustomers",
+    `${import.meta.env.VITE_API_URL}/getCustomers`,
     {
       withCredentials: true
     }
@@ -92,7 +92,7 @@ const handleDeleteCustomer = async (id) => {
   );
   if (!confirmDelete) return;
   const res = await axios.delete(
-    `http://localhost:8000/deleteCustomer/${id}`,
+    `${import.meta.env.VITE_API_URL}/deleteCustomer/${id}`,
     {
       withCredentials: true
     }

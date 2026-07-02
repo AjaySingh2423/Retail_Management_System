@@ -13,7 +13,7 @@ const Profile = () => {
   useEffect(() => {
     const checkUser = async () => {
       try {
-        const res=await axios.get("http://localhost:8000/home", {
+        const res=await axios.get(`${import.meta.env.VITE_API_URL}/home`, {
           withCredentials: true
         });
         
@@ -30,7 +30,7 @@ const Profile = () => {
   useEffect(() => {
 
   axios.get(
-    "http://localhost:8000/getShopkeeper",
+    `${import.meta.env.VITE_API_URL}/getShopkeeper`,
     {
       withCredentials: true
     }
@@ -55,7 +55,7 @@ const handleEdit = async (field) => {
   try {
 
     const res = await axios.put(
-      "http://localhost:8000/updateProfile",
+      `${import.meta.env.VITE_API_URL}/updateProfile`,
       {
         field,
         value: newValue
