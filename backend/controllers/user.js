@@ -724,7 +724,7 @@ async function handleSendBillEmail(req, res) {
 
     await transporter.sendMail({
 
-      from: "ajayitprojects@gmail.com",
+      from: process.env.EMAIL,
 
       to: customerEmail,
 
