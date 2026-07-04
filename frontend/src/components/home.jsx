@@ -19,8 +19,14 @@ const Home = () => {
         setName(res.data.message);
 
       } catch (err) {
-        navigate("/");   //redirect if not logged in
-      }
+    console.error(err);
+
+    if (err.response?.status === 401) {
+        navigate("/");
+    } else {
+        alert("Server error. Please try again.");
+    }
+}
     };
 
     checkUser();
@@ -32,13 +38,14 @@ const Home = () => {
 
   axios.get(
     `${import.meta.env.VITE_API_URL}/dashboard`,
-    {
-      withCredentials: true
-    }
-  )
-  .then((res) => {
+    { withCredentials: true }
+)
+.then((res)=>{
     setDashboard(res.data);
-  });
+})
+.catch((err)=>{
+    console.error(err);
+});
 
 }, []);
 
