@@ -30,8 +30,9 @@ async function  handleLogin(req,res){
                    const token = setUser(user);
 
                      res.cookie("uid", token, {
-                      httpOnly: true,     
-                      sameSite: "lax",
+                      httpOnly: true,
+                      secure: true,     
+                      sameSite: "None",
                     });
 
                      res.json({user: true});
