@@ -93,84 +93,92 @@ async function  handleLogin(req,res){
   }
  }
                                                                                  //Adding product
- async function handleAddProducts(req,res){
-    
+ async function handleAddProducts(req, res) {
+  try {
     const shopkeeperId1 = req.user._id;
 
     const {
-    shopkeeperId,
-    name,
-    category,
-    brand,
-    buyPrice,
-    sellPrice,
-    quantity,
-    expiry,
-    supplier
+      shopkeeperId,
+      name,
+      category,
+      brand,
+      buyPrice,
+      sellPrice,
+      quantity,
+      expiry,
+      supplier
     } = req.body;
 
-    
     const existingProduct = await Product.findOne({
-    name,
-    category,
-    brand,
-    buyPrice,
-    sellPrice,
-    shopkeeperId: shopkeeperId1
+      name,
+      category,
+      brand,
+      buyPrice,
+      sellPrice,
+      shopkeeperId: shopkeeperId1
     });
 
-if (existingProduct) {
-  existingProduct.quantity += Number(quantity);
-  await existingProduct.save();
+    if (existingProduct) {
+      existingProduct.quantity += Number(quantity);
+      await existingProduct.save();
 
-  await PurchaseHistory.create({
-    productId: existingProduct._id,
-    productName: name,
-    supplier,
-    expiry,
-    quantityPurchased: quantity,
-    buyPrice,
-    shopkeeperId: shopkeeperId1
-  });
+      await PurchaseHistory.create({
+        productId: existingProduct._id,
+        productName: name,
+        supplier,
+        expiry,
+        quantityPurchased: quantity,
+        buyPrice,
+        shopkeeperId: shopkeeperId1
+      });
 
-  return res.status(200).json({
-    message: "Stock updated successfully"
-  });
-}
+      return res.status(200).json({
+        message: "Stock updated successfully"
+      });
+    }
 
-const LastProduct = await Product.findOne({
-    shopkeeperId: shopkeeperId1
-    }).sort({productId: -1 });
+    const LastProduct = await Product.findOne({
+      shopkeeperId: shopkeeperId1
+    }).sort({ productId: -1 });
 
-const productId = LastProduct
-  ? LastProduct.productId + 1
-  : 1;
+    const productId = LastProduct
+      ? LastProduct.productId + 1
+      : 1;
 
-const product = await Product.create({
-  shopkeeperId: shopkeeperId1,
-  productId,
-  name,
-  category,
-  brand,
-  buyPrice,
-  sellPrice,
-  quantity
-});
+    const product = await Product.create({
+      shopkeeperId: shopkeeperId1,
+      productId,
+      name,
+      category,
+      brand,
+      buyPrice,
+      sellPrice,
+      quantity
+    });
 
-await PurchaseHistory.create({
-  productId: product._id,
-  productName: name,
-  supplier,
-  expiry,
-  quantityPurchased: quantity,
-  buyPrice,
-  shopkeeperId: shopkeeperId1
-});
+    await PurchaseHistory.create({
+      productId: product._id,
+      productName: name,
+      supplier,
+      expiry,
+      quantityPurchased: quantity,
+      buyPrice,
+      shopkeeperId: shopkeeperId1
+    });
 
-return res.status(201).json({
-  message: "Product added successfully"
-});
-    
+    return res.status(201).json({
+      message: "Product added successfully"
+    });
+
+  } catch (err) {
+    console.error("Add Product Error:");
+    console.error(err);
+
+    return res.status(500).json({
+      success: false,
+      message: err.message
+    });
+  }
 }
                                                                         //Adding coustomer
  async function handleAddCoustomer(req,res){
