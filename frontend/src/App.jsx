@@ -55,11 +55,6 @@ function App() {
         path: '/profile',
         element:<> <Profile /></>
        },
-       {
-        path: "/orders",
-        element: <><Orders /> </>
-       }
-
  ])
 
   return (
